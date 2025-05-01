@@ -30,7 +30,7 @@ const Navbar = () => {
               </li>
               <li className='flex items-center gap-x-1 text-[#839496] hover:text-[#839496] duration-400 hover:scale-120'>
                 <IoPersonSharp />
-                <a href='#' className='flex'>
+                <a href='#about' className='flex'>
                   About
                 </a>
               </li>

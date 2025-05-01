@@ -4,12 +4,12 @@ import Musashi from "./assets/musashi.png";
 const About = () => {
   return (
     <>
-      <div className="max-w-100/100 w-100/100 flex items-center justify-center h-screen">
+      <div id='about' className="max-w-100/100 w-100/100 flex items-center justify-center h-screen">
         <div className="flex flex-col">
           <p className="flex items-center justify-center">
             <h1 className="mb-20 font-bold text-5xl text-[#839496]">
               About Me
-              <hr className="text-blue-500 w-20 flex align-center items-center justify-center " />
+              <hr className="text-blue-500 w-30 flex align-center items-center justify-center mx-auto" />
             </h1>
           </p>
 
@@ -26,6 +26,44 @@ const About = () => {
                   My primary programming language is Javascript, which I use to create software that is both reliable and performant.
                   My expertise lies in designing solutions that are straightforward ensuring that they are easy to maintain.
                 </p>
+                <div className="text-[#839496] text-white">
+                  <div className="text-2xl flex justify-between my-5">
+                    <div className="flex flex-col">
+                      <span className="text-[#268bd2]">
+                        Name:
+                      </span>
+                      <span>
+                        Miamoto Musashi
+                      </span>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-[#268bd2]">
+                        Email:
+                      </span>
+                      <span>
+                        Myura@gmail.com
+                      </span>
+                    </div>
+                  </div>
+                  <div className="text-2xl flex justify-between">
+                    <div className="flex flex-col">
+                      <span className="text-[#268bd2]">
+                        Address:
+                      </span>
+                      <span>
+                        Miamoto Village
+                      </span>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-[#268bd2]">
+                        Status:
+                      </span>
+                      <span>
+                        Busy
+                      </span>
+                    </div>
+                  </div>
+                </div>
                 <div className="flex align-left justify-left gap-3 mt-5">
                   <a href="#" className="shadow-xl ring-2 ring-cyan-500/30 px-4 py-2 rounded-xl transition-transform duration-300 hover:scale-110 bg-[#073642] text-[#839496] text-2xl hover:bg-[#2aa198] hover:text-[#eee8d5]">
                     Get In Touch
