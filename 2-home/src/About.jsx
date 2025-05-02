@@ -19,7 +19,8 @@ const About = () => {
             </div>
             <div className="flex align-top justify-center max-w-50/100">
               <div>
-                <p className="flex align-top text-[#268bd2] text-3xl">
+                {/*<p className="flex align-top text-[#268bd2] text-3xl">*/}
+                <p className="flex align-top text-[#2aa198] text-3xl">
                   React Developer
                 </p>
                 <p className="flex text-[#839496] text-2xl mt-3">
@@ -29,36 +30,36 @@ const About = () => {
                 <div className="text-[#839496] text-white">
                   <div className="text-2xl flex justify-between my-5">
                     <div className="flex flex-col">
-                      <span className="text-[#268bd2]">
+                      <span className="text-[#2aa198]">
                         Name:
                       </span>
-                      <span>
+                      <span className="text-[#eee8d5]">
                         Miamoto Musashi
                       </span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[#268bd2]">
+                      <span className="text-[#2aa198]">
                         Email:
                       </span>
-                      <span>
+                      <span className="text-[#eee8d5]">
                         Myura@gmail.com
                       </span>
                     </div>
                   </div>
                   <div className="text-2xl flex justify-between">
                     <div className="flex flex-col">
-                      <span className="text-[#268bd2]">
+                      <span className="text-[#2aa198]">
                         Address:
                       </span>
-                      <span>
+                      <span className="text-[#eee8d5]">
                         Miamoto Village
                       </span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[#268bd2]">
+                      <span className="text-[#2aa198]">
                         Status:
                       </span>
-                      <span>
+                      <span className="text-[#eee8d5]">
                         Busy
                       </span>
                     </div>

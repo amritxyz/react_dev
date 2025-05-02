@@ -73,7 +73,7 @@ const Skill = () => {
   return (
     <>
       <div id="skills" className="text-center md:mt-8 flex flex-col items-center justify-center">
-        <h1 className="text-5xl text-[#fdf6e3] font-bold inline-block ">
+        <h1 className="text-5xl text-[#eee8d5] font-bold inline-block ">
           My Skills
           <span className="block h-1 w-24 bg-[#2aa198] mx-auto mt-2 rounded"></span>
         </h1>
@@ -92,7 +92,7 @@ const Skill = () => {
               </h2>
               <ul className="flex flex-wrap justify-center gap-3">
                 {skill.langs.map((lang, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-[#fdf6e3] text-[1.23rem] px-3 py-1 bg-[#2aa198] rounded-full">
+                  <li key={idx} className="flex items-center gap-3 text-[#eee8d5] text-[1.23rem] px-3 py-1 bg-[#2aa198] rounded-full">
                     {techIconMap[lang]}
                     {lang}
                   </li>
