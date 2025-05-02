@@ -13,7 +13,7 @@ const Navbar = () => {
           {/*Left Side*/}
           <div className='flex item-center'>
             <p className='flex justify-center items-center duration-400 text-[#839496] hover:text-[#839496] hover:scale-120'>
-              <a href='#' className='flex justify-between items-center'>
+              <a href='#home' className='flex justify-between items-center'>
                 Amritxyz
               </a>
             </p>
@@ -24,7 +24,7 @@ const Navbar = () => {
             <ul className='flex justify-between gap-15 items-center'>
               <li className='flex items-center gap-x-1 text-[#839496] hover:text-[#839496] duration-400 hover:scale-120'>
                 <FaHome />
-                <a href='#' className='flex '>
+                <a href='#home' className='flex '>
                   Home
                 </a>
               </li>
@@ -36,12 +36,12 @@ const Navbar = () => {
               </li>
               <li className='flex items-center gap-x-1 text-[#839496] hover:text-[#839496] duration-400 hover:scale-120'>
                 <IoMdContact />
-                <a href='#' className='flex'>
-                  Contacts </a>
+                <a href='#skills' className='flex'>
+                  Skills </a>
               </li>
               <li className='flex items-center gap-x-1 text-[#839496] hover:text-[#839496] duration-400 hover:scale-120'>
                 <MdMiscellaneousServices />
-                <a href='#' className='flex'>
+                <a href='#services' className='flex'>
                   Services </a>
               </li>
             </ul>

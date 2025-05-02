@@ -9,13 +9,13 @@ const About = () => {
           <p className="flex items-center justify-center">
             <h1 className="mb-20 font-bold text-5xl text-[#839496]">
               About Me
-              <hr className="text-blue-500 w-30 flex align-center items-center justify-center mx-auto" />
+              <span className="block h-1 w-24 bg-[#268bd2] mx-auto mt-2 rounded"></span>
             </h1>
           </p>
 
           <div className="flex items-center justify-center mx-100 gap-20">
             <div className="flex items-center justify-center max-w-50/100">
-              <img src={Musashi} className="shadow-lg shadow-cyan-500/30 ring-3 ring-cyan-500/30 rounded-[1rem] h-90 duration-400 " />
+              <img src={Musashi} className="shadow-lg shadow-cyan-500/30 ring-3 ring-cyan-500/30 rounded-[1rem] h-100 duration-400 " />
             </div>
             <div className="flex align-top justify-center max-w-50/100">
               <div>
