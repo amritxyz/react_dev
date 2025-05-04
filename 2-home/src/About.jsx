@@ -6,12 +6,12 @@ const About = () => {
     <>
       <div id='about' className="max-w-100/100 w-100/100 flex items-center justify-center h-screen">
         <div className="flex flex-col">
-          <p className="flex items-center justify-center">
-            <h1 className="mb-20 font-bold text-5xl text-[#839496]">
+          <div className="flex items-center justify-center">
+            <p className="mb-20 font-bold text-5xl text-[#839496]">
               About Me
               <span className="block h-1 w-24 bg-[#268bd2] mx-auto mt-2 rounded"></span>
-            </h1>
-          </p>
+            </p>
+          </div>
 
           <div className="flex items-center justify-center mx-100 gap-20">
             <div className="flex items-center justify-center max-w-50/100">
