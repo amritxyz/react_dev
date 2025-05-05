@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+	font-family: monospace;
+	/* font-weight: 600; */
+	/* font-size: 20px; */
+}
+
+body {
+	background-color: #002b36;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
