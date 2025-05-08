@@ -98,7 +98,7 @@ const Login = () => {
                     >
                         Login
                     </button>
-                    <p className="flex items-center justify-center my-3 text-white">
+                    <p className="flex items-center justify-center my-3">
                         new to our page?
                         <Link to="/signup" className="mx-1 text-blue-500 hover:underline duration-300">
                             Signup

@@ -113,9 +113,9 @@ const Signup = () => {
                     </button>
                 </Form>
             </Formik>
-            <p className="flex items-center justify-center my-3 text-white">
+            <p className="flex items-center justify-center my-3">
                 already have one?
-                <Link to="/" className="mx-1 text-blue-500 hover:underline duration-300">
+                <Link to="/login" className="mx-1 text-blue-500 hover:underline duration-300">
                     Login
                 </Link>
             </p>

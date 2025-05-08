@@ -1,6 +1,7 @@
 import React from 'react'
 import Login from './Login.jsx'
 import Signup from './Signup.jsx'
+import Hero from './Hero.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router'
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Hero />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
       </BrowserRouter>
