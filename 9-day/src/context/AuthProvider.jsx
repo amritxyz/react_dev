@@ -1,23 +1,17 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext.jsx";
 
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(() => localStorage.getItem("token"));
   const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem("user");
-    try {
-      return savedUser ? JSON.parse(savedUser) : null;
-    } catch {
-      console.error("Failed to parse user from localStorage", error);
-      return null;
-    }
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
   });
 
-  const login = (setToken, useState) => {
-    setToken(loginToken);
+  const login = (newToken, userDetails) => {
+    setToken(newToken);
     setUser(userDetails);
-  }
+  };
 
   useEffect(() => {
     if (token && user) {
@@ -27,23 +21,26 @@ const AuthProvider = ({ children }) => {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
     }
-  }, [token, user])
+  }, [token, user]);
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     const storedUser = localStorage.getItem("user");
 
-    if (storedToken && storedUser) {
-      storedToken(storedToken);
-      storedUser(storedUser);
+    if (storedToken && !token) {
+      setToken(storedToken);
     }
-  }, [])
+
+    if (storedUser && !user) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ token, user, login }} >
+    <AuthContext.Provider value={{ token, user, login }}>
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
 export default AuthProvider;

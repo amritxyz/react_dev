@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-import { AuthContext } from "./context/AuthContext.jsx";
+import { AuthContext } from "../context/AuthContext.jsx";
 
 const Login = () => {
     const { login } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     // Define initial values
     const initialValues = {
@@ -29,16 +30,18 @@ const Login = () => {
     // Handle submit with postFormData
     const onSubmit = async (values) => {
         try {
-            const response = await axios.post("https://blog-hqx2.onrender.com/user/login", values);
-            toast.success("User registered successfully.");
+            const response = await axios.post("https://blog-hqx2.onrender.com/user/login ", values);
+            toast.success("Login successful.");
+
             const token = response.data.token;
             const user = response.data.user;
-            console.log(token, user);
+
+            login(token, user);
+
+            navigate("/dashboard");
         } catch (error) {
-            toast.error(error.message);
-            const token = respone.data.token;
-            const user = response.data.user;
-            console.log(token, user);
+            const errorMessage = error.response?.data?.message || error.message;
+            toast.error(errorMessage);
         }
     };
 
