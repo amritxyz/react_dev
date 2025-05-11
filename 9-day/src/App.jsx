@@ -5,6 +5,7 @@ import Hero from './pages/Hero.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import Dashboard from './pages/Dashboard.jsx'
+import CreateBlog from './pages/CreateBlog.jsx'
 
 function App() {
   return (
@@ -16,6 +17,12 @@ function App() {
               <Dashboard />
             </ProtectedRoute>
           } />
+          <Route path='/createblog' element={
+            <ProtectedRoute>
+              <CreateBlog />
+            </ProtectedRoute>
+          } />
+          <Route path="/" element={<Hero />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>

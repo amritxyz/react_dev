@@ -29,7 +29,7 @@ const Dashboard = () => {
 
   const navitems = [
     { title: "Home", icon: <IoIosHome />, path: "/dashboard" },
-    { title: "Create", icon: <IoCreateOutline />, path: "/createblogs" },
+    { title: "Create", icon: <IoCreateOutline />, path: "/createblog" },
     { title: "My blogs", icon: <GoBook />, path: "/myblogs" },
   ];
 
