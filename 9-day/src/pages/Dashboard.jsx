@@ -7,6 +7,7 @@ import { AiOutlinePoweroff } from "react-icons/ai";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext.jsx";
+import Footer from "../Footer.jsx"
 
 const Dashboard = () => {
   const [blogs, setBlogs] = useState([]);
@@ -178,6 +179,7 @@ const Dashboard = () => {
       {/* child routes */}
       <div className="p-4">
         <Outlet context={{ blogs }} />
+        <Footer />
       </div>
     </section>
   );
