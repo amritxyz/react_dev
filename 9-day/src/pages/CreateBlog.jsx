@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+
 
 const CreateBlog = () => {
   const navigate = useNavigate();
+  const { token } = useContext(AuthContext); // add this at top
 
   // Initial blog details
   const initialValues = {
@@ -26,13 +29,40 @@ const CreateBlog = () => {
       }),
   });
 
-  // Handle form submission
-  const handleSubmit = async (values, { resetForm }) => {
-    // Simulate form submission (e.g., API call)
-    console.log("Form Values:", values);
-    resetForm(); // Reset form after submission
-    navigate("/dashboard"); // Redirect to homepage
+
+  const handleSubmit = async (values, { resetForm, setSubmitting }) => {
+    const formData = new FormData();
+    formData.append("title", values.blogtitle); // match backend field names
+    formData.append("content", values.yourContent);
+    formData.append("image", values.featureImage);
+
+    try {
+      const response = await fetch("https://blog-hqx2.onrender.com/blog", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Server error: ${response.status} - ${errorText}`);
+      }
+
+      const result = await response.json();
+      console.log("Blog created:", result);
+
+      resetForm();
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to create blog. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
+
 
   const formitems = [
     {
