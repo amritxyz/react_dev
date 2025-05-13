@@ -7,6 +7,7 @@ import ProtectedRoute from './components/ProtectedRoute.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import CreateBlog from './pages/CreateBlog.jsx';
 import Blog from './pages/Blog.jsx';
+import MyBlog from './pages/MyBlog.jsx';
 
 function App() {
   return (
@@ -26,6 +27,11 @@ function App() {
           <Route path='/createblog' element={
             <ProtectedRoute>
               <CreateBlog />
+            </ProtectedRoute>
+          } />
+          <Route path='/myblog' element={
+            <ProtectedRoute>
+              <MyBlog />
             </ProtectedRoute>
           } />
           <Route path="/" element={<Hero />} />
