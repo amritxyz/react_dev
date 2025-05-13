@@ -1,11 +1,12 @@
-import React from 'react'
-import Login from './pages/Login.jsx'
-import Signup from './pages/Signup.jsx'
-import Hero from './pages/Hero.jsx'
-import { BrowserRouter, Routes, Route } from 'react-router'
-import ProtectedRoute from './components/ProtectedRoute.jsx'
-import Dashboard from './pages/Dashboard.jsx'
-import CreateBlog from './pages/CreateBlog.jsx'
+import React from 'react';
+import Login from './pages/Login.jsx';
+import Signup from './pages/Signup.jsx';
+import Hero from './pages/Hero.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import CreateBlog from './pages/CreateBlog.jsx';
+import Blog from './pages/Blog.jsx';
 
 function App() {
   return (
@@ -15,6 +16,11 @@ function App() {
           <Route path="/dashboard" element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          } />
+          <Route path="/blog/:id" element={
+            <ProtectedRoute>
+              <Blog />
             </ProtectedRoute>
           } />
           <Route path='/createblog' element={

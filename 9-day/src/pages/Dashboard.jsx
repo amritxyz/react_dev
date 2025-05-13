@@ -77,9 +77,10 @@ const Dashboard = () => {
               <li key={index}>
                 <Link
                   to={item.path}
-                  className={`flex items-center space-x-2 px-3 py-2 border border-transparent rounded-xl transition-all duration-200 hover:bg-gray-800/10 hover:border-gray-700 ${location.pathname === item.path
-                    ? "bg-gray-200 border-gray-700"
-                    : ""
+                  className={`flex items-center space-x-2 px-3 py-2 border border-transparent rounded-xl transition-all duration-200 hover:bg-gray-800/10 hover:border-gray-700
+                    ${location.pathname === item.path
+                      ? "bg-gray-200 border-gray-700"
+                      : ""
                     }`}
                 >
                   <span className="text-blue-500">{item.icon}</span>
@@ -144,29 +145,30 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
         {blogs && blogs.length > 0 ? (
           blogs.map((val, i) => (
-            <div
-              key={i}
-              className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-            >
-              <h2 className="text-lg font-bold text-gray-800 mb-1 line-clamp-1">
-                {val.title}
-              </h2>
-              <p className="text-xs text-gray-600 mb-2">
-                by{" "}
-                <span className="font-medium truncate">{val.author.name}</span> (
-                {val.author.email})
-              </p>
-              <img
-                src={val.image}
-                alt={val.title}
-                className="w-full h-36 object-cover rounded mb-3"
-              />
-              <p className="text-sm text-gray-700 line-clamp-3 mb-2">
-                {val.content}
-              </p>
-              <p className="text-xs text-gray-500">
-                Created at: {new Date(val.createdAt).toLocaleString()}
-              </p>
+            <div key={val._id || i}>
+              <Link to={`/blog/${val._id}`}>
+                <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                  <h2 className="text-lg font-bold text-gray-800 mb-1 line-clamp-1">
+                    {val.title}
+                  </h2>
+                  <p className="text-xs text-gray-600 mb-2">
+                    by{" "}
+                    <span className="font-medium truncate">{val.author.name}</span> (
+                    {val.author.email})
+                  </p>
+                  <img
+                    src={val.image}
+                    alt={val.title}
+                    className="w-full h-36 object-cover rounded mb-3"
+                  />
+                  <p className="text-sm text-gray-700 line-clamp-3 mb-2 whitespace-pre-wrap">
+                    {val.content}
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    Created at: {new Date(val.createdAt).toLocaleString()}
+                  </p>
+                </div>
+              </Link>
             </div>
           ))
         ) : (
