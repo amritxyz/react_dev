@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Courses from "../components/Courses";
+import Courses from "../pages/Courses.jsx";
 
 const Navbar = () => {
   return (
@@ -12,7 +12,7 @@ const Navbar = () => {
 
           {/* INFO: Logo stuffs */}
           <div className='flex flex-row items-center justify-center gap-6'>
-            <a href="#hero" className="flex items-center gap-2">
+            <a href="/#hero" className="flex items-center gap-2">
               <div className='rounded-full h-8 w-8 flex items-center justify-center
              bg-gradient-to-r from-blue-500 to-purple-500'>
                 <span className='text-white font-bold text-sm'>ED</span>
@@ -25,8 +25,8 @@ const Navbar = () => {
             {/* TODO: Navigate through <Link /> */}
             <nav className="hidden md:flex gap-6 text-sm">
               <Link to="/courses" className="font-medium text-current/70 transition-colors hover:text-current"> All Courses </Link>
-              <a href="#category" className="font-medium text-current/70 transition-colors hover:text-current"> Categories </a>
-              <a href="#footer" className="font-medium text-current/70 transition-colors hover:text-current"> About Us </a>
+              <a href="/category" className="font-medium text-current/70 transition-colors hover:text-current"> Categories </a>
+              <a href="/#footer" className="font-medium text-current/70 transition-colors hover:text-current"> About Us </a>
             </nav>
           </div>
 
