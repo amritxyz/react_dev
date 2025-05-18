@@ -9,6 +9,12 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext.jsx";
 import Footer from "../Footer.jsx";
 
+// Swiper imports
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+
 const Dashboard = () => {
   const [blogs, setBlogs] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,7 +23,7 @@ const Dashboard = () => {
 
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get("https://blog-hqx2.onrender.com/blog ");
+      const response = await axios.get("https://blog-hqx2.onrender.com/blog");
       setBlogs(response.data);
     } catch (error) {
       console.error("Error fetching blogs:", error);
@@ -49,16 +55,14 @@ const Dashboard = () => {
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
-      {/* Header / Navbar */}
+      {/* Header */}
       <header className="bg-white shadow-md border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            {/* Logo */}
             <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
               <Link to="/dashboard">BlogVerse</Link>
             </h1>
 
-            {/* Desktop Nav */}
             <nav className="hidden md:flex items-center space-x-6">
               <ul className="flex space-x-6">
                 {navItems.map((item, index) => (
@@ -95,7 +99,7 @@ const Dashboard = () => {
               </ul>
             </nav>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile menu toggle */}
             <button
               className="md:hidden text-gray-700 focus:outline-none"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -106,7 +110,7 @@ const Dashboard = () => {
         </div>
       </header>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-lg p-4 animate-fadeIn">
           <ul className="space-y-3">
@@ -147,8 +151,48 @@ const Dashboard = () => {
         </div>
       )}
 
-      {/* Main Content */}
+      {/* Main content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Swiper at the top */}
+        {blogs.length > 0 && (
+          <div className="mb-10">
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              spaceBetween={20}
+              slidesPerView={1}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+              }}
+              pagination={{ clickable: true }}
+              loop={true}
+            >
+              {blogs.slice(0, 5).map((blog, i) => (
+                <SwiperSlide key={blog._id || i}>
+                  <Link to={`/blog/${blog._id}`}>
+                    <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden shadow-lg group">
+                      <img
+                        src={blog.image}
+                        alt={blog.title}
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-6 flex flex-col justify-end">
+                        <h2 className="text-white text-2xl font-semibold mb-1 line-clamp-1">
+                          {blog.title}
+                        </h2>
+                        <p className="text-gray-200 text-sm line-clamp-2">
+                          {blog.content}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        )}
+
+        {/* Blog cards below the Swiper */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {blogs.length > 0 ? (
             blogs.map((blog, i) => (
