@@ -1,24 +1,43 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from 'yup'
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const initialValues = {
-  fullName: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
+  user: "",
+  email: "",
+  password: "",
 };
 
+// Validation schema using Yup
 const validationSchema = Yup.object({
-  fullName: Yup.string().required('Full Name is required.'),
-  email: Yup.string().email('Invalid Email').required('Email is required.'),
-  password: Yup.string().min(6, 'at least 6 characters.').required('Password is required.'),
+  user: Yup.string()
+    .required("Full Name is required")
+    .min(4, "Full Name must be at least 4 characters")
+    .max(40, "Full Name cannot exceed 40 characters"),
+
+  email: Yup.string()
+    .email("Invalid email format")
+    .required("Email is required"),
+
+  password: Yup.string()
+    .required("Password is required")
+    .min(6, "Password must be at least 6 characters"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Passwords must match.')
     .required('Confirm Password is required.'),
+
 });
 
-const onSubmit = (values) => {
-  console.log('Form Data: ', values);
+// Handle submit with onSubmit
+const onSubmit = async (values) => {
+  try {
+    await axios.post("https://blog-hqx2.onrender.com/user/register", values);
+    toast.success("User registered successfully.");
+  } catch (error) {
+    toast.error(error.message);
+  }
 };
 
 const SignUp = () => {
